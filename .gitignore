@@ -1,0 +1,59 @@
+# =========================================
+# Node modules (frontend + backend)
+# =========================================
+node_modules/
+Server/node_modules/
+
+# =========================================
+# Environment files (VERY IMPORTANT)
+# =========================================
+.env
+.env.*
+Server/.env
+Server/.env.*
+
+# Never push sensitive keys or certificates
+*.pem
+*.key
+
+# =========================================
+# Build / Output folders
+# =========================================
+build/
+dist/
+Server/build/
+Server/dist/
+Server/client_build/
+
+# React cache
+.cache/
+*.cache/
+
+# =========================================
+# Logs
+# =========================================
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+*.log
+logs/
+
+# =========================================
+# IDE / System files
+# =========================================
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# =========================================
+# Temporary files
+# =========================================
+tmp/
+temp/
+coverage/
+
+# vercel files
+.vercel/
