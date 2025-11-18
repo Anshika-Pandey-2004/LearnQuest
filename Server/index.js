@@ -21,7 +21,7 @@ const PORT = process.env.PORT || 4000;
 const allowedOrigins = [
   "http://localhost:3000",                       // local dev
        
-  "https://learn-quest-sigma.vercel.app"   // frontend deploy
+  "https://learn-quest-ashen.vercel.app"   // frontend deploy
 ];
 
 //database connect
