@@ -341,31 +341,37 @@ export const getFullDetailsOfCourse = async (courseId, token) => {
 
 // mark a lecture as complete
 export const markLectureAsComplete = async (data, token) => {
-  let result = null
-  //console.log("mark complete data", data)
-  const toastId = toast.loading("Loading...")
-  try {
-    const response = await apiConnector("POST", LECTURE_COMPLETION_API, data, {
-      Authorization: `Bearer ${token}`,
-    })
-    //console.log(
-      "MARK_LECTURE_AS_COMPLETE_API API RESPONSE............",
-      response
-    )
+  let result = null;
+  const toastId = toast.loading("Loading...");
 
-    if (!response.data.message) {
-      throw new Error(response.data.error)
+  try {
+    const response = await apiConnector(
+      "POST",
+      LECTURE_COMPLETION_API,
+      data,
+      {
+        Authorization: `Bearer ${token}`
+      }
+    );
+
+    if (!response.data?.message) {
+      throw new Error(response.data?.error || "Error completing lecture");
     }
-    toast.success("Lecture Completed")
-    result = true
+
+    toast.success("Lecture Completed");
+    result = true;
+
   } catch (error) {
-    //console.log("MARK_LECTURE_AS_COMPLETE_API API ERROR............", error)
-    toast.error(error.message)
-    result = false
+    toast.error(error.message);
+    result = false;
+
+  } finally {
+    toast.dismiss(toastId);
   }
-  toast.dismiss(toastId)
-  return result
-}
+
+  return result;
+};
+
 
 // create a rating for course
 export const createRating = async (data, token) => {
